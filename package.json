@@ -1,0 +1,19 @@
+{
+  "name": "proshop-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marvin1030/proshop-v2.git"
+  },
+  "author": "Marvin Snakar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marvin1030/proshop-v2/issues"
+  },
+  "homepage": "https://github.com/marvin1030/proshop-v2#readme"
+}
