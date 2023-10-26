@@ -9,10 +9,10 @@ const App = () => {
       <Header />
       <main className='py-3'>
         <Container>
-         <Outlet></Outlet>
+          <Outlet></Outlet>
         </Container>
       </main>
-      <Footer/>
+      <Footer />
     </>
 
   )
