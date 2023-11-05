@@ -15,7 +15,7 @@ const authUser = asyncHandler(async (req, res) => {
     if (user && (await user.matchedPassword(password))) {
         res.status(200).send({
             id: user._id,
-            user: user.name,
+            name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
         });

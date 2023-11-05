@@ -22,7 +22,7 @@ const CartScreen = () => {
     }
 
     const handleCheckout = () => {
-        navigate('/logout?/redirect=/shipping')
+        navigate('/login?/redirect=/shipping')
     }
     return (
         <Row>
