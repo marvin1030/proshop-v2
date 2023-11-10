@@ -18,10 +18,10 @@ export const updateCart = (state) => {
     state.shippingPrice = addDecibals(state.itemsPrice > 100 ? 0 : 10);
 
     //calculate tax (15%)
-    state.taxes = addDecibals(state.itemsPrice * .15)
+    state.taxPrice = addDecibals(state.itemsPrice * .15)
 
     // get cart total
-    state.cartTotal = addDecibals(state.itemsPrice + state.shippingPrice + state.taxes)
+    state.totalPrice = addDecibals(state.itemsPrice + state.shippingPrice + state.taxPrice)
 
     // save state to local storage
     localStorage.setItem('cart', JSON.stringify(state));

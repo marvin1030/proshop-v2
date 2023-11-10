@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 const Header = () => {
   const { cartItems, numberOfItems } = useSelector(state => state.cart);
   const { userInfo } = useSelector(state => state.auth);
-  console.log(userInfo)
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -64,12 +64,13 @@ const Header = () => {
                 </NavDropdown>
               )
                 :
-                (<LinkContainer to={'/login'}>
-                  <Nav.Link>
-                    <FaUser />
-                    Sign In
-                  </Nav.Link>
-                </LinkContainer>)}
+                (
+                  <LinkContainer to={'/login'}>
+                    <Nav.Link>
+                      <FaUser />
+                      Sign In
+                    </Nav.Link>
+                  </LinkContainer>)}
 
             </Nav>
 
