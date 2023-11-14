@@ -32,13 +32,13 @@ const PlaceOrderScreen = () => {
                 orderItems: cart.cartItems,
                 shippingAddress,
                 paymentMethod,
-                itemPrice: cart.itemPrice,
+                itemsPrice: cart.itemsPrice,
                 shippingPrice: cart.shippingPrice,
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
             navigate(`/order/${res._id}`)
-            dispatch(clearCartItems)
+            dispatch(clearCartItems(cart))
         } catch (error) {
             toast.error(error)
         }
