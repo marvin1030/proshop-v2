@@ -90,10 +90,22 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 // @desc Update User
-// @route  PUT /api/users
+// @route  PUT /api/users/:id
 // @access Private
 const updateUser = asyncHandler(async (req, res) => {
-    res.send('update user');
+    console.log('params', req.params)
+    console.log('body', req.body)
+    const user = await User.findById({ _id: req.params.id });
+    if (user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.isAdmin = Boolean(req.body.isAdmin);
+        user.save();
+        res.status(200).json(user)
+    } else {
+        res.status(404);
+        throw new Error('User not found')
+    }
 });
 
 // @desc Update User profile
@@ -124,25 +136,47 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 });
 
-// @desc Get Users
-// @route  GET /api/users
-// @access Private/ADMIN
-const getUserByID = asyncHandler(async (req, res) => {
-    res.send(' get user by id');
-});
-
-// @desc Get User by ID
+// @desc Get Users by ID
 // @route  GET /api/users/:id
 // @access Private/ADMIN
+const getUserByID = asyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.params.id);
+    if (user) {
+        res.status(200).json(user)
+    } else {
+        res.status(404);
+        throw new Error('User not found')
+    }
+});
+
+// @desc Get Users
+// @route  GET /api/users/
+// @access Private/ADMIN
 const getUsers = asyncHandler(async (req, res) => {
-    res.send(' get users');
+    const users = await User.find({});
+    if (users) {
+        res.status(200).json(users)
+    } else {
+        res.status(404);
+        throw new Error('Could not get users');
+    }
 });
 
 // @desc Delete User
 // @route  DELETE /api/users/:id
 // @access Private/ADMIN
 const deleteUser = asyncHandler(async (req, res) => {
-    res.send(' delete user');
+    const user = await User.findById(req.params.id);
+    if (user) {
+        if (user.isAdmin) {
+            res.status(400);
+            throw new Error('You cannot delete an admin user')
+        } else {
+            user.deleteOne({ _id: user._id });
+            res.status(200).json({ message: 'Deleted User' })
+        }
+    }
 });
 
 

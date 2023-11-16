@@ -8,7 +8,7 @@ const generateToken = (res, userID) => {
         httpOnly: true,
         sameSite: 'strict',
         maxAge: 30 * 24 * 60 * 60 * 1000,//20 days
-        signed: process.env.NODE_ENV !== 'development',
+        secure: process.env.NODE_ENV !== 'development',
     })
 }
 
